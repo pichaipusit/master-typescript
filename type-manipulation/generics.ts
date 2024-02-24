@@ -15,3 +15,24 @@ const result: CommonHandler<User> = {
   data: { id: "1", name: "Joy" },
   reason: "User created",
 };
+
+// 🙋🏻 There're many kinds of book in the store with the same base data.
+// How can we prevent the imposter book that don't have base data?
+interface Item {
+  id: number;
+  name: string;
+}
+type CheckType = never;
+
+const item: CheckType<Item> = {
+  id: 0,
+  name: "Jess",
+};
+
+interface BigBook {
+  onSale: boolean;
+}
+const book = {
+  id: 0,
+  name: "Jess",
+};
