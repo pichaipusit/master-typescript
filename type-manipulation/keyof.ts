@@ -13,3 +13,20 @@ const partTimeStaff: PartialStaff<Staff> = {
   id: 22,
   name: "Kitty",
 };
+
+// 🙋🏻 Help the vet check a property of clients' pets.
+// The property should only be of that kind of animal."
+interface Cat {
+  name: string;
+  age: number;
+}
+interface Dog extends Cat {
+  breed: "Poodle" | "Chihuahua";
+}
+
+function printAnimalProperty(animal, property) {
+  console.log(`The animal's ${property} is ${animal[property]}`);
+}
+
+let cat: Cat = { name: "Alice", age: 2 };
+printAnimalProperty(cat, "age");
