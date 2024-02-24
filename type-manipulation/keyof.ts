@@ -47,9 +47,9 @@ const appConfig: AppConfig = {
   loggingEnabled: true,
 };
 
-function getConfigValue(key) {
+function getConfigValue<K extends keyof AppConfig>(key: K): AppConfig[K] {
   return appConfig[key];
 }
 
 const validUrl = getConfigValue("apiUrl");
-const invalidUrl = getConfigValue("apiUze");
+const invalidUrl = getConfigValue("apiUze"); //Error should appear here
