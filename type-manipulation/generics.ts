@@ -22,17 +22,18 @@ interface Item {
   id: number;
   name: string;
 }
-type CheckType = never;
+type CheckType<T> = T extends Item ? T : never;
 
 const item: CheckType<Item> = {
   id: 0,
   name: "Jess",
 };
 
-interface BigBook {
+interface BigBook extends Item {
   onSale: boolean;
 }
-const book = {
+const book: CheckType<BigBook> = {
   id: 0,
   name: "Jess",
+  onSale: true,
 };
