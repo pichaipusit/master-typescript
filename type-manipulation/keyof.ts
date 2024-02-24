@@ -5,9 +5,11 @@ type Staff = {
   age: number;
 };
 
-type PartialStaff = {};
+type PartialStaff<T> = {
+  [K in keyof T]?: T[K];
+};
 
-const partTimeStaff: Staff = {
+const partTimeStaff: PartialStaff<Staff> = {
   id: 22,
   name: "Kitty",
 };
