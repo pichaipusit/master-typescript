@@ -33,3 +33,23 @@ function printAnimalProperty<T extends Dog | Cat>(
 
 let cat: Cat = { name: "Alice", age: 2 };
 printAnimalProperty(cat, "age");
+
+// 🙋🏻 Prevent user from getting a key that don't exist
+interface AppConfig {
+  apiUrl: string;
+  timeout: number;
+  loggingEnabled: boolean;
+}
+
+const appConfig: AppConfig = {
+  apiUrl: "https://api.example.com",
+  timeout: 5000,
+  loggingEnabled: true,
+};
+
+function getConfigValue(key) {
+  return appConfig[key];
+}
+
+const validUrl = getConfigValue("apiUrl");
+const invalidUrl = getConfigValue("apiUze");
