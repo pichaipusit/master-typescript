@@ -1,7 +1,7 @@
 // 🙋🏻 How to handle error for different types of data
-
-interface CommonHandler {
+interface CommonHandler<T> {
   status: "success" | "fail";
+  data?: T;
   reason?: string;
 }
 
@@ -10,8 +10,8 @@ interface User {
   name: string;
 }
 
-const result = {
+const result: CommonHandler<User> = {
   status: "success",
-  data: { id: "1", sa: "Joy" },
+  data: { id: "1", name: "Joy" },
   reason: "User created",
 };
