@@ -24,8 +24,11 @@ interface Dog extends Cat {
   breed: "Poodle" | "Chihuahua";
 }
 
-function printAnimalProperty(animal, property) {
-  console.log(`The animal's ${property} is ${animal[property]}`);
+function printAnimalProperty<T extends Dog | Cat>(
+  animal: T,
+  property: keyof T
+) {
+  console.log(`The animal's ${String(property)} is ${animal[property]}`);
 }
 
 let cat: Cat = { name: "Alice", age: 2 };
