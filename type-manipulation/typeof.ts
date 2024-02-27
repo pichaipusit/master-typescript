@@ -2,11 +2,13 @@
 // See more detail https://www.youtube.com/watch?v=jjMbPt_H3RQ
 // 🙋🏻 So what we need to use instead?
 
-enum LOG_LEVEL {
-  DEBUG = "DEBUG",
-  WARNING = "WARNING",
-  ERROR = "ERROR",
-}
+const LOG_LEVEL = {
+  DEBUG: "DEBUG",
+  WARNING: "WARNING",
+  ERROR: "ERROR",
+} as const;
 
-function log(message: string, level: LOG_LEVEL) {}
+type LogLevel = keyof typeof LOG_LEVEL;
+
+function log(message: string, level: LogLevel) {}
 log("msg", "ERROR");
