@@ -22,3 +22,9 @@ function parseCoordinate(arg1: unknown, arg2?: unknown): Coordinate {
   }
   return coord;
 }
+
+console.log(parseCoordinate({ x: 10, y: 20 }));
+console.log(parseCoordinate(30, 40));
+
+// 🙋🏻 What if u want to accept this too?
+console.log(parseCoordinate("x: 11, y: 12"));
