@@ -6,13 +6,19 @@ interface Coordinate {
 
 function parseCoordinate(obj: Coordinate): Coordinate;
 function parseCoordinate(x: number, y: number): Coordinate;
+function parseCoordinate(str: string): Coordinate;
 function parseCoordinate(arg1: unknown, arg2?: unknown): Coordinate {
   let coord: Coordinate = {
     x: 0,
     y: 0,
   };
 
-  if (typeof arg1 === "object") {
+  if (typeof arg1 === "string") {
+    (arg1 as string).split(",").forEach((str) => {
+      const [key, val] = str.split(":");
+      coord[key] = Number(val);
+    });
+  } else if (typeof arg1 === "object") {
     coord = { ...(arg1 as Coordinate) };
   } else {
     coord = {
@@ -27,4 +33,4 @@ console.log(parseCoordinate({ x: 10, y: 20 }));
 console.log(parseCoordinate(30, 40));
 
 // 🙋🏻 What if u want to accept this too?
-console.log(parseCoordinate("x: 11, y: 12"));
+console.log(parseCoordinate("x:11,y:12"));
